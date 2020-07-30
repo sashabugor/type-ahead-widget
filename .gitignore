@@ -1,0 +1,13 @@
+# build
+build
+
+# dependencies
+yarn-error.log
+node_modules
+
+# webpack
+webpack-stats.json
+
+# test results
+test-results
+test-coverage
