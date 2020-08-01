@@ -59,7 +59,7 @@ class InputWrapper extends React.Component<Props, State> {
     const { isSearchActive, inputValue } = this.state;
 
     const searchResults = Search({ list, value: inputValue });
-    const suggestions = searchResults.map(result => result.item as string);
+    const suggestions = searchResults.map(result => ({ item: result.item, matches: result.matches }));
 
     return (
       <div className={classes.root}>
