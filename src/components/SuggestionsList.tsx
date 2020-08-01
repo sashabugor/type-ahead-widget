@@ -20,6 +20,7 @@ const styles = createStyles({
 type Suggestion = {
   item: string;
   matches: readonly Fuse.FuseResultMatch[];
+  ref?: React.RefObject<HTMLDivElement>;
 };
 
 interface Props extends WithStyles<typeof styles> {
