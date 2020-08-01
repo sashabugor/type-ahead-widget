@@ -3,7 +3,8 @@ import { List } from '../list';
 
 const options: Fuse.IFuseOptions<unknown> = {
   includeScore: true,
-  threshold: 0.2,
+  threshold: 0.1,
+  includeMatches: true,
 };
 
 type Props = {
