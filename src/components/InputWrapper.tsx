@@ -2,7 +2,8 @@ import React from 'react';
 import { WithStyles, withStyles, createStyles } from '@material-ui/core/styles';
 import Input from './Input';
 import { List } from '../list';
-import SuggestionsList from './SuggestionsList'
+import SuggestionsList from './SuggestionsList';
+import Search from './Search';
 
 const styles = createStyles({
   root: {
@@ -34,13 +35,13 @@ class InputWrapper extends React.Component<Props, State> {
 
     this.setInputValue(event.target.value);
 
-    if (!isSearchActive && event.target.value.length > 2) {
+    if (!isSearchActive && event.target.value.length > 1) {
       this.setState({
         isSearchActive: true,
       });
     }
 
-    if (isSearchActive && event.target.value.length <= 2) {
+    if (isSearchActive && event.target.value.length <= 1) {
       this.setState({
         isSearchActive: false,
       });
@@ -57,10 +58,13 @@ class InputWrapper extends React.Component<Props, State> {
     const { classes, list } = this.props;
     const { isSearchActive, inputValue } = this.state;
 
+    const searchResults = Search({ list, value: inputValue });
+    const suggestions = searchResults.map(result => result.item as string);
+
     return (
       <div className={classes.root}>
         <Input inputValue={inputValue} onChange={this.handleChange} />
-        {isSearchActive && (<SuggestionsList onSuggestionSelect={this.setInputValue}list={list} />)}
+        {isSearchActive && (<SuggestionsList onSuggestionSelect={this.setInputValue} list={suggestions} />)}
       </div>
     );
   }

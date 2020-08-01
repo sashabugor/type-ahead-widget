@@ -9,7 +9,8 @@ const styles = createStyles({
   root: {
     overflow: 'auto',
     width: '99.5%',
-    height: '150px',
+    height: '100%',
+    maxHeight: '160px',
     border: '1px solid #2C397F',
     borderRadius: '4px',
   },
@@ -21,6 +22,10 @@ interface Props extends WithStyles<typeof styles> {
 }
 
 const SuggestionsList = ({ list, classes, onSuggestionSelect }: Props) => {
+  if (!list.length) {
+    return null;
+  }
+  
   return (
     <div className={classes.root}>
       <MuiList>
