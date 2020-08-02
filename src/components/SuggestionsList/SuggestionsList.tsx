@@ -12,16 +12,12 @@ const styles = createStyles({
     maxHeight: '160px',
     border: '1px solid #2C397F',
     borderRadius: '4px',
-  },
-  active: {
-    backgroundColor: '#00000040',
-  },
+  }
 });
 
 export type Suggestion = {
   item: string;
   matches: readonly Fuse.FuseResultMatch[];
-  ref?: React.RefObject<HTMLDivElement>;
 };
 
 interface Props extends WithStyles<typeof styles> {
@@ -33,7 +29,7 @@ type State = {
   activeItemIndex: number;
 };
 
-class SuggestionsList extends React.PureComponent<Props, State> {
+export class SuggestionsList extends React.PureComponent<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {

@@ -18,7 +18,7 @@ interface Props extends WithStyles<typeof styles> {
   onSuggestionSelect: (value: string) => void;
 }
 
-class SuggestionsItem extends React.PureComponent<Props> {
+export class SuggestionsItem extends React.PureComponent<Props> {
   ref = React.createRef<HTMLDivElement>();
 
   componentDidMount() {

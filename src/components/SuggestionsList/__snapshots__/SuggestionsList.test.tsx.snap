@@ -1,0 +1,70 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SuggestionsList should render and match snapshot 1`] = `
+<div
+  className="MOCK_CLASS"
+>
+  <WithStyles(ForwardRef(List))>
+    <WithStyles(SuggestionsItem)
+      activeItemIndex={0}
+      index={0}
+      item={
+        Object {
+          "item": "Banana",
+          "matches": Array [
+            Object {
+              "indices": Array [
+                1,
+                4,
+              ],
+              "value": "Banana",
+            },
+          ],
+        }
+      }
+      key="0"
+      onSuggestionSelect={[MockFunction]}
+    />
+    <WithStyles(SuggestionsItem)
+      activeItemIndex={0}
+      index={1}
+      item={
+        Object {
+          "item": "Mango",
+          "matches": Array [
+            Object {
+              "indices": Array [
+                1,
+                4,
+              ],
+              "value": "Mango",
+            },
+          ],
+        }
+      }
+      key="1"
+      onSuggestionSelect={[MockFunction]}
+    />
+    <WithStyles(SuggestionsItem)
+      activeItemIndex={0}
+      index={2}
+      item={
+        Object {
+          "item": "Mangosteen",
+          "matches": Array [
+            Object {
+              "indices": Array [
+                1,
+                4,
+              ],
+              "value": "Mangosteen",
+            },
+          ],
+        }
+      }
+      key="2"
+      onSuggestionSelect={[MockFunction]}
+    />
+  </WithStyles(ForwardRef(List))>
+</div>
+`;
