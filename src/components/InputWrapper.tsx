@@ -21,7 +21,7 @@ type State = {
 };
 
 export class InputWrapper extends React.Component<Props, State> {
-  ref = React.createRef<HTMLDivElement>();
+  private divRef: React.RefObject<HTMLInputElement>;
 
   constructor(props: Props) {
     super(props);
@@ -30,6 +30,7 @@ export class InputWrapper extends React.Component<Props, State> {
       isListOpen: false,
       inputValue: '',
     };
+    this.divRef = React.createRef();
   }
 
   componentDidMount() {
@@ -37,7 +38,7 @@ export class InputWrapper extends React.Component<Props, State> {
   }
 
   handleClickOutside = (event: Event) => {
-    if (this.ref.current && this.ref.current.contains(event.target as Node)) {
+    if (this.divRef.current && this.divRef.current.contains(event.target as Node)) {
       return;
     }
 
@@ -76,7 +77,7 @@ export class InputWrapper extends React.Component<Props, State> {
   getSearchResults = () => {
     const { list } = this.props;
     const { inputValue } = this.state;
-    
+
     return Search({ list, value: inputValue }).map(result => ({ item: result.item, matches: result.matches }));
   }
 
@@ -91,7 +92,7 @@ export class InputWrapper extends React.Component<Props, State> {
     return (
       <div className={classes.root}>
         <Input inputValue={inputValue} onChange={this.handleChange} />
-          {isListOpen && (<div ref={this.ref}><SuggestionsList onSuggestionSelect={this.setInputValue} list={this.getSearchResults()} /></div>)}
+          {isListOpen && (<div ref={this.divRef}><SuggestionsList onSuggestionSelect={this.setInputValue} list={this.getSearchResults()} /></div>)}
       </div>
     );
   }
