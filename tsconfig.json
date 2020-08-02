@@ -1,5 +1,6 @@
 {
     "compilerOptions": {
+      "typeRoots": ["./node_modules/@types", "./node_modules/jest-enzyme"],
       "jsx": "react",
       "module": "commonjs",
       "esModuleInterop": true,

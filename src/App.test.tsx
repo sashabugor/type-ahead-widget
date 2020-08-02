@@ -7,9 +7,9 @@ import list from './list';
 describe('App', () => {
   it('should render InputWrapper and pass props', () => {
     const root = shallow(<App />);
+    const element = root.find(InputWrapper);
 
-    // expect(root.find(InputWrapper).exists()).toBe(true);
-    // expect(root.find(InputWrapper).props().list).toEqual(['some']);
-    expect(root.find(InputWrapper)).toExist();
+    expect(element).toExist();
+    expect(element).toHaveProp('list', list);
   });
 });
