@@ -1,9 +1,9 @@
 import React from 'react';
 import { WithStyles, withStyles, createStyles } from '@material-ui/core/styles';
-import Input from './Input';
+import Input from './Input/Input';
 import { List } from '../list';
-import SuggestionsList from './SuggestionsList';
-import Search from './Search';
+import SuggestionsList from './SuggestionsList/SuggestionsList';
+import Search from './Search/Search';
 
 const styles = createStyles({
   root: {
@@ -71,6 +71,10 @@ class InputWrapper extends React.Component<Props, State> {
       inputValue: value,
       isListOpen: false,
     });
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('mousedown', this.handleClickOutside, false);
   }
 
   render() {

@@ -1,5 +1,5 @@
 import Fuse from 'fuse.js';
-import { List } from '../list';
+import { List } from '../../list';
 
 const options: Fuse.IFuseOptions<unknown> = {
   includeScore: true,
