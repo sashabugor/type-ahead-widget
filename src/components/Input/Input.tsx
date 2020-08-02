@@ -15,7 +15,7 @@ interface Props extends WithStyles<typeof styles> {
 
 class Input extends React.PureComponent<Props> {
   componentDidMount() {
-    document.addEventListener('keydown', this.handleKeydown ,false);
+    document.addEventListener('keydown', this.handleKeydown, false);
   }
 
   handleKeydown = (event: KeyboardEvent) => {
@@ -25,7 +25,7 @@ class Input extends React.PureComponent<Props> {
   }
 
   componentWillUnmount() {
-    document.removeEventListener('keydown', this.handleKeydown ,false);
+    document.removeEventListener('keydown', this.handleKeydown, false);
   }
 
   render() {
