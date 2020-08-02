@@ -7,7 +7,7 @@ import HighlightMatch from '../HighlightMatch/HighlightMatch';
 
 const styles = createStyles({
   active: {
-    backgroundColor: '#00000040',
+    backgroundColor: '#00000008',
   },
 });
 
