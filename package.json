@@ -59,7 +59,7 @@
   "scripts": {
     "start": "webpack-dev-server --open",
     "build": "webpack",
-    "test": "jest",
+    "test": "jest --maxWorkers=4",
     "test:watch": "jest --watch",
     "typecheck": "tsc --project tsconfig.json --noEmit"
   }
