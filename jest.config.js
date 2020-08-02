@@ -6,8 +6,12 @@ module.exports = {
   transform: {
     ...tsjPreset.transform,
   },
-  testRegex: '(test).(ts?|tsx?)$',
+  testRegex: '\\.test.(ts?|tsx?)$',
   moduleFileExtensions: ['js', 'json', 'jsx', 'ts', 'tsx', 'node', 'd.ts'],
   snapshotSerializers: ['enzyme-to-json/serializer'],
-  setupTestFrameworkScriptFile: '<rootDir>/src/setupEnzyme.ts',
+  setupFilesAfterEnv: ['./src/setupTests.ts'],
+  testEnvironment: 'enzyme',
+  testEnvironmentOptions: {
+    enzymeAdapter: 'react16',
+  },
 };

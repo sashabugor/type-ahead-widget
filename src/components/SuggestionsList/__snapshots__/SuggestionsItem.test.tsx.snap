@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SuggestionsItem should render and match snapshot 1`] = `
+<div>
+  <WithStyles(ForwardRef(ListItem))
+    button={true}
+    className={null}
+    onClick={[Function]}
+  >
+    <WithStyles(ForwardRef(ListItemText))
+      primary={
+        <HighlightMatch
+          matches={
+            Array [
+              Object {
+                "indices": Array [
+                  1,
+                  4,
+                ],
+                "value": "Banana",
+              },
+            ]
+          }
+        >
+          Banana
+        </HighlightMatch>
+      }
+    />
+  </WithStyles(ForwardRef(ListItem))>
+</div>
+`;

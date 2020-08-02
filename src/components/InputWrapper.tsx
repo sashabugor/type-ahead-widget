@@ -8,7 +8,7 @@ import Search from './Search/Search';
 const styles = createStyles({
   root: {
     width: '50%',
-  }
+  },
 });
 
 interface Props extends WithStyles<typeof styles>{
@@ -20,8 +20,8 @@ type State = {
   inputValue: string;
 };
 
-class InputWrapper extends React.Component<Props, State> {
-  ref = React.createRef<HTMLDivElement>();
+export class InputWrapper extends React.Component<Props, State> {
+  private divRef: React.RefObject<HTMLInputElement>;
 
   constructor(props: Props) {
     super(props);
@@ -30,6 +30,7 @@ class InputWrapper extends React.Component<Props, State> {
       isListOpen: false,
       inputValue: '',
     };
+    this.divRef = React.createRef();
   }
 
   componentDidMount() {
@@ -37,7 +38,7 @@ class InputWrapper extends React.Component<Props, State> {
   }
 
   handleClickOutside = (event: Event) => {
-    if (this.ref.current && this.ref.current.contains(event.target as Node)) {
+    if (this.divRef.current && this.divRef.current.contains(event.target as Node)) {
       return;
     }
 
@@ -73,21 +74,25 @@ class InputWrapper extends React.Component<Props, State> {
     });
   }
 
+  getSearchResults = () => {
+    const { list } = this.props;
+    const { inputValue } = this.state;
+
+    return Search({ list, value: inputValue }).map((result) => ({ item: result.item, matches: result.matches }));
+  }
+
   componentWillUnmount() {
     document.removeEventListener('mousedown', this.handleClickOutside, false);
   }
 
   render() {
-    const { classes, list } = this.props;
+    const { classes } = this.props;
     const { isListOpen, inputValue } = this.state;
-
-    const searchResults = Search({ list, value: inputValue });
-    const suggestions = searchResults.map(result => ({ item: result.item, matches: result.matches }));
 
     return (
       <div className={classes.root}>
         <Input inputValue={inputValue} onChange={this.handleChange} />
-          {isListOpen && (<div ref={this.ref}><SuggestionsList onSuggestionSelect={this.setInputValue} list={suggestions} /></div>)}
+        {isListOpen && (<div ref={this.divRef}><SuggestionsList onSuggestionSelect={this.setInputValue} list={this.getSearchResults()} /></div>)}
       </div>
     );
   }

@@ -7,7 +7,7 @@ import HighlightMatch from '../HighlightMatch/HighlightMatch';
 
 const styles = createStyles({
   active: {
-    backgroundColor: '#00000040',
+    backgroundColor: '#00000008',
   },
 });
 
@@ -18,7 +18,7 @@ interface Props extends WithStyles<typeof styles> {
   onSuggestionSelect: (value: string) => void;
 }
 
-class SuggestionsItem extends React.PureComponent<Props> {
+export class SuggestionsItem extends React.PureComponent<Props> {
   ref = React.createRef<HTMLDivElement>();
 
   componentDidMount() {
@@ -28,7 +28,7 @@ class SuggestionsItem extends React.PureComponent<Props> {
   }
 
   componentDidUpdate(prevProps: Props) {
-    if (this.props.activeItemIndex !== prevProps.activeItemIndex && this.isItemActive()){
+    if (this.props.activeItemIndex !== prevProps.activeItemIndex && this.isItemActive()) {
       this.scrollItemIntoView();
     }
   }
@@ -45,7 +45,7 @@ class SuggestionsItem extends React.PureComponent<Props> {
 
     return activeItemIndex === index;
   }
-  
+
   render() {
     const {
       index,
@@ -62,11 +62,11 @@ class SuggestionsItem extends React.PureComponent<Props> {
           onClick={() => onSuggestionSelect(item.item)}
         >
           <ListItemText
-            primary={
+            primary={(
               <HighlightMatch matches={item.matches}>
                 {item.item}
               </HighlightMatch>
-            }
+            )}
           />
         </ListItem>
       </div>
