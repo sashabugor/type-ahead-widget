@@ -19,6 +19,7 @@
       "types": ["react", "jest"]
     },
     "include": [
-      "src/index.tsx"
+      "src/index.tsx",
+      "./global.d.ts"
     ]
   }

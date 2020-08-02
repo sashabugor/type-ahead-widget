@@ -6,7 +6,7 @@ module.exports = {
   transform: {
     ...tsjPreset.transform,
   },
-  testRegex: '(test).(ts?|tsx?)$',
+  testRegex: '\\.test.(ts?|tsx?)$',
   moduleFileExtensions: ['js', 'json', 'jsx', 'ts', 'tsx', 'node', 'd.ts'],
   snapshotSerializers: ['enzyme-to-json/serializer'],
   setupFilesAfterEnv: ['./src/setupTests.ts'],
