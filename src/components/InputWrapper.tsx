@@ -1,9 +1,9 @@
 import React from 'react';
 import { WithStyles, withStyles, createStyles } from '@material-ui/core/styles';
-import Input from './Input';
+import Input from './Input/Input';
 import { List } from '../list';
-import SuggestionsList from './SuggestionsList';
-import Search from './Search';
+import SuggestionsList from './SuggestionsList/SuggestionsList';
+import Search from './Search/Search';
 
 const styles = createStyles({
   root: {
@@ -16,34 +16,52 @@ interface Props extends WithStyles<typeof styles>{
 }
 
 type State = {
-  isSearchActive: boolean;
+  isListOpen: boolean;
   inputValue: string;
 };
 
 class InputWrapper extends React.Component<Props, State> {
+  ref = React.createRef<HTMLDivElement>();
+
   constructor(props: Props) {
     super(props);
 
     this.state = {
-      isSearchActive: false,
+      isListOpen: false,
       inputValue: '',
     };
   }
 
+  componentDidMount() {
+    document.addEventListener('mousedown', this.handleClickOutside, false);
+  }
+
+  handleClickOutside = (event: Event) => {
+    if (this.ref.current && this.ref.current.contains(event.target as Node)) {
+      return;
+    }
+
+    this.setState({
+      isListOpen: false,
+    });
+  }
+
   handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { isSearchActive } = this.state;
+    const { isListOpen } = this.state;
 
-    this.setInputValue(event.target.value);
+    this.setState({
+      inputValue: event.target.value,
+    });
 
-    if (!isSearchActive && event.target.value.length > 1) {
+    if (!isListOpen && event.target.value.length > 1) {
       this.setState({
-        isSearchActive: true,
+        isListOpen: true,
       });
     }
 
-    if (isSearchActive && event.target.value.length <= 1) {
+    if (isListOpen && event.target.value.length <= 1) {
       this.setState({
-        isSearchActive: false,
+        isListOpen: false,
       });
     }
   };
@@ -51,12 +69,17 @@ class InputWrapper extends React.Component<Props, State> {
   setInputValue = (value: string) => {
     this.setState({
       inputValue: value,
+      isListOpen: false,
     });
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('mousedown', this.handleClickOutside, false);
   }
 
   render() {
     const { classes, list } = this.props;
-    const { isSearchActive, inputValue } = this.state;
+    const { isListOpen, inputValue } = this.state;
 
     const searchResults = Search({ list, value: inputValue });
     const suggestions = searchResults.map(result => ({ item: result.item, matches: result.matches }));
@@ -64,7 +87,7 @@ class InputWrapper extends React.Component<Props, State> {
     return (
       <div className={classes.root}>
         <Input inputValue={inputValue} onChange={this.handleChange} />
-        {isSearchActive && (<SuggestionsList onSuggestionSelect={this.setInputValue} list={suggestions} />)}
+          {isListOpen && (<div ref={this.ref}><SuggestionsList onSuggestionSelect={this.setInputValue} list={suggestions} /></div>)}
       </div>
     );
   }

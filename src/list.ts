@@ -104,7 +104,6 @@ const list: List = [
   'White currant',
   'White sapote',
   'Yuzu',
-  'Avocado',
   'Bell pepper',
   'Chili pepper',
   'Corn kernel',
