@@ -13,7 +13,7 @@ interface Props extends WithStyles<typeof styles> {
   inputValue?: string,
 };
 
-class Input extends React.PureComponent<Props> {
+export class Input extends React.PureComponent<Props> {
   componentDidMount() {
     document.addEventListener('keydown', this.handleKeydown, false);
   }
