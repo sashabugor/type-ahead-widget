@@ -11,7 +11,7 @@ const styles = createStyles({
 interface Props extends WithStyles<typeof styles> {
   onChange: (event: React.ChangeEvent) => void,
   inputValue?: string,
-};
+}
 
 export class Input extends React.PureComponent<Props> {
   componentDidMount() {

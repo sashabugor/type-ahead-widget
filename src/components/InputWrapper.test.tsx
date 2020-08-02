@@ -39,9 +39,9 @@ describe('InputWrapper', () => {
     it('should set isListOpen', () => {
       const list = ['ITEM_1'];
       const root = shallow<InputWrapper>(<InputWrapper classes={{ root: 'MOCK_CLASS' }} list={list} />);
-  
+
       root.instance().handleChange({ target: { value: 'asa' } } as React.ChangeEvent<HTMLInputElement>);
-  
+
       expect(root.instance().state.isListOpen).toBe(true);
     });
   });
@@ -82,9 +82,9 @@ describe('InputWrapper', () => {
       const expectedResults = [{
         item: 'ITEM_1',
         matches: [{
-          indices: [[ 0, 1 ]],
-          value: 'ITEM_1'
-        }]
+          indices: [[0, 1]],
+          value: 'ITEM_1',
+        }],
       }];
       root.setState({
         inputValue: 'IT',

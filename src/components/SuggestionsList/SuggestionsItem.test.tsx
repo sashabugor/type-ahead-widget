@@ -7,11 +7,11 @@ import { SuggestionsItem } from './SuggestionsItem';
 describe('SuggestionsItem', () => {
   const indices = ([1, 4] as unknown) as Fuse.RangeTuple[];
   const props = {
-      item: { item: 'Banana', matches: [{ indices, value: 'Banana' }] },
-      index: 2,
-      activeItemIndex: 0,
-      onSuggestionSelect: jest.fn(),
-      classes: { active: 'MOCK_ACTIVE' },
+    item: { item: 'Banana', matches: [{ indices, value: 'Banana' }] },
+    index: 2,
+    activeItemIndex: 0,
+    onSuggestionSelect: jest.fn(),
+    classes: { active: 'MOCK_ACTIVE' },
   };
 
   it('should render and match snapshot', () => {
@@ -68,7 +68,7 @@ describe('SuggestionsItem', () => {
       root.setProps({
         activeItemIndex: 2,
       });
-      
+
       const element = root.find(ListItem);
       element.props().onClick('MOCK_EVENT' as unknown as React.MouseEvent<HTMLDivElement>);
 

@@ -16,6 +16,6 @@ const Search = ({ list, value }: Props): Fuse.FuseResult<string>[] => {
   const fuse = new Fuse(list, options);
 
   return fuse.search(value);
-}
+};
 
 export default Search;

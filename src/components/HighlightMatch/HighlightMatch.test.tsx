@@ -26,14 +26,14 @@ describe('HighlightMatch', () => {
       ] as readonly Fuse.FuseResultMatch[];
 
       const wrapper = shallow(
-        <HighlightMatch matches={matches}>Passionfruit</HighlightMatch>
+        <HighlightMatch matches={matches}>Passionfruit</HighlightMatch>,
       );
       const strong = wrapper.find('strong');
 
       expect(strong).toExist();
       expect(strong.text()).toEqual('Pas');
 
-      const children = wrapper.props().children;
+      const { children } = wrapper.props();
 
       expect(children).toHaveLength(3);
       expect(children[0]).toEqual('');

@@ -12,7 +12,7 @@ const styles = createStyles({
     maxHeight: '160px',
     border: '1px solid #2C397F',
     borderRadius: '4px',
-  }
+  },
 });
 
 export type Suggestion = {

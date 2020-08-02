@@ -8,7 +8,7 @@ import Search from './Search/Search';
 const styles = createStyles({
   root: {
     width: '50%',
-  }
+  },
 });
 
 interface Props extends WithStyles<typeof styles>{
@@ -78,7 +78,7 @@ export class InputWrapper extends React.Component<Props, State> {
     const { list } = this.props;
     const { inputValue } = this.state;
 
-    return Search({ list, value: inputValue }).map(result => ({ item: result.item, matches: result.matches }));
+    return Search({ list, value: inputValue }).map((result) => ({ item: result.item, matches: result.matches }));
   }
 
   componentWillUnmount() {
@@ -92,7 +92,7 @@ export class InputWrapper extends React.Component<Props, State> {
     return (
       <div className={classes.root}>
         <Input inputValue={inputValue} onChange={this.handleChange} />
-          {isListOpen && (<div ref={this.divRef}><SuggestionsList onSuggestionSelect={this.setInputValue} list={this.getSearchResults()} /></div>)}
+        {isListOpen && (<div ref={this.divRef}><SuggestionsList onSuggestionSelect={this.setInputValue} list={this.getSearchResults()} /></div>)}
       </div>
     );
   }

@@ -28,7 +28,7 @@ export class SuggestionsItem extends React.PureComponent<Props> {
   }
 
   componentDidUpdate(prevProps: Props) {
-    if (this.props.activeItemIndex !== prevProps.activeItemIndex && this.isItemActive()){
+    if (this.props.activeItemIndex !== prevProps.activeItemIndex && this.isItemActive()) {
       this.scrollItemIntoView();
     }
   }
@@ -45,7 +45,7 @@ export class SuggestionsItem extends React.PureComponent<Props> {
 
     return activeItemIndex === index;
   }
-  
+
   render() {
     const {
       index,
@@ -62,11 +62,11 @@ export class SuggestionsItem extends React.PureComponent<Props> {
           onClick={() => onSuggestionSelect(item.item)}
         >
           <ListItemText
-            primary={
+            primary={(
               <HighlightMatch matches={item.matches}>
                 {item.item}
               </HighlightMatch>
-            }
+            )}
           />
         </ListItem>
       </div>
